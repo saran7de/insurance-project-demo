@@ -32,3 +32,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Ignore Files ###
+*.class
+*.settings
+*.project
