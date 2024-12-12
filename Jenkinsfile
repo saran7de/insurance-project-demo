@@ -5,7 +5,7 @@ node{
     }
     
     stage('maven build'){
-        sh 'mvn clean package'
+        sh '/opt/homebrew/bin/mvn clean package'
     }
     
     stage('containerize'){
