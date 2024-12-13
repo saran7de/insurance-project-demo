@@ -19,6 +19,11 @@ node{
         }
     }
     
+    environment {
+        // Add your ansible-playbook path here
+        PATH = "/usr/local/bin:/opt/homebrew/bin:${env.PATH}"  // Adjust paths accordingly
+    }
+
     stage('Deploy to Test'){
      ansiblePlaybook become: true, credentialsId: 'ansible-key', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'configure-test-server.yml', vaultTmpPath: ''
     }
