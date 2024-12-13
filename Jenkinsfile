@@ -9,13 +9,13 @@ node{
     }
     
     stage('containerize'){
-      //  sh 'docker build -t shubhamkushwah123/insure-me:1.0 .'
+        sh 'docker build -t saran7de/insure-me:1.0 .'
     }
     
     stage('Release'){
         withCredentials([string(credentialsId: 'dockerHubPwd', variable: 'dockerHubPwd')]) {
-      //  sh "docker login -u shubhamkushwah123 -p ${dockerHubPwd}"
-     //   sh 'docker push shubhamkushwah123/insure-me:1.0'
+        sh "docker login -u saran7de -p ${dockerHubPwd}"
+        sh 'docker push saran7de/insure-me:1.0'
         }
     }
     
@@ -24,7 +24,7 @@ node{
     }
     
     stage('checkout regression test source code'){
-        git 'https://github.com/shubhamkushwah123/my-selenium-test-app.git'
+        git 'https://github.com/saran7de/my-selenium-test-app.git'
     }
     
     stage('build test scripts'){
@@ -36,7 +36,7 @@ node{
     }
 
     stage('checkout'){
-        git 'https://github.com/shubhamkushwah123/insurance-project-demo.git'
+        git 'https://github.com/saran7de/insurance-project-demo.git'
     }
     
      stage('Deploy to Test'){
