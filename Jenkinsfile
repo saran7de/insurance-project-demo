@@ -9,13 +9,13 @@ node{
     }
     
     stage('containerize'){
-        sh 'docker build -t saran7de/insure-me:1.0 .'
+        sh '/usr/local/bin/docker build -t saran7de/insure-me:1.0 .'
     }
     
     stage('Release'){
         withCredentials([string(credentialsId: 'dockerHubPwd', variable: 'dockerHubPwd')]) {
-        sh "docker login -u saran7de -p ${dockerHubPwd}"
-        sh 'docker push saran7de/insure-me:1.0'
+        sh "/usr/local/bin/docker login -u saran7de -p ${dockerHubPwd}"
+        sh '/usr/local/bin/docker push saran7de/insure-me:1.0'
         }
     }
     
@@ -28,7 +28,7 @@ node{
     }
     
     stage('build test scripts'){
-        sh 'mvn clean package assembly:single'
+        sh '/opt/homebrew/bin/mvn clean package assembly:single'
     }
     
     stage('execute selenium test script'){
