@@ -1,7 +1,7 @@
 node{
     
     stage('checkout'){
-        git 'https://github.com/shubhamkushwah123/insurance-project-demo.git'
+        git 'https://github.com/saran7de/insurance-project-demo.git'
     }
     
     stage('maven build'){
@@ -27,6 +27,7 @@ node{
     stage('Deploy to Test'){
      //ansiblePlaybook become: true, credentialsId: 'ansible-key', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'configure-test-server.yml', vaultTmpPath: ''
      //sh 'TMPDIR=/tmp /opt/homebrew/bin/ansible-playbook configure-test-server.yml -i /etc/ansible/hosts -b --become-user root'
+     sh '/opt/homebrew/bin/ansible-playbook configure-test-server.yml -i /etc/ansible/hosts -b --become-user root'
     }
     
     stage('checkout regression test source code'){
@@ -45,7 +46,7 @@ node{
         git 'https://github.com/saran7de/insurance-project-demo.git'
     }
     
-     stage('Deploy to Test'){
+     stage('Deploy to Prod'){
      //ansiblePlaybook become: true, credentialsId: 'ansible-key', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'configure-prod-server.yml', vaultTmpPath: ''
     }
     
