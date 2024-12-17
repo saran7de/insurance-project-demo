@@ -27,7 +27,8 @@ node{
     stage('Deploy to Test'){
      //ansiblePlaybook become: true, credentialsId: 'ansible-key', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'configure-test-server.yml', vaultTmpPath: ''
      //sh 'TMPDIR=/tmp /opt/homebrew/bin/ansible-playbook configure-test-server.yml -i /etc/ansible/hosts -b --become-user root'
-     sh '/opt/homebrew/bin/ansible-playbook configure-test-server.yml -i /etc/ansible/hosts -b --become-user root'
+     //sh '/opt/homebrew/bin/ansible-playbook configure-test-server.yml -i /etc/ansible/hosts -b --become-user root'
+     sh '/opt/homebrew/bin/ansible-playbook configure-test-server.yml -i https://ec2-35-173-122-127.compute-1.amazonaws.com/ -b --become-user root'
     }
     
     stage('checkout regression test source code'){
