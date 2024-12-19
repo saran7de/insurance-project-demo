@@ -1,7 +1,7 @@
 node{
     
     stage('checkout'){
-        git 'https://github.com/shubhamkushwah123/insurance-project-demo.git'
+        git 'https://github.com/saran7de/insurance-project-demo.git'
     }
     
     stage('maven build'){
